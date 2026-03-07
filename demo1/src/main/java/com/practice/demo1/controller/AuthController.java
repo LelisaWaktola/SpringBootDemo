@@ -32,10 +32,6 @@ public class AuthController {
              );
     }
 
-    @PostMapping("/login")
-    public ResponseEntity<ApiResponse<AuthResponse>> login(@RequestBody AuthRequest request){
-        AuthResponse response= userRepository.findByEmail()
-    }
 
 }
 
