@@ -31,6 +31,6 @@ public class User {
     private String firstName;
     private String lastName;
 
-    @OneToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch=FetchType.LAZY, orphanRemoval=true)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch=FetchType.LAZY, orphanRemoval=true)
     private Set<Expense> expenses= new HashSet<>();
 }

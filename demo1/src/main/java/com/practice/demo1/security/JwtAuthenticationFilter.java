@@ -1,5 +1,7 @@
 package com.practice.demo1.security;
 
+import com.practice.demo1.entity.User;
+import com.practice.demo1.service.CustomUserDetailsService;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -32,6 +34,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         try {
             String jwt = getJwtFromRequest(request);
+            String path = request.getServletPath();
+            if (path.startsWith("/auth")) {
+                filterChain.doFilter(request, response);
+                return;
+            }
 
             if (StringUtils.hasText(jwt) && jwtTokenProvider.validateToken(jwt)) {
 
